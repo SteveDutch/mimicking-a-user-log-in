@@ -1,9 +1,10 @@
 package com.coderscampus.assignment3;
 
-public class Test {
+public class LogIn {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		UsersData users = new UsersData();
+		System.out.println();
 
 	}
 
