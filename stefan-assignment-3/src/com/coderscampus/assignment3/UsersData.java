@@ -8,15 +8,14 @@ import java.io.IOException;
 public class UsersData {
 	
 	private int count = 0;
-	
-	
+		
 	public UsersData() {
 		System.out.println("Heia");
 		
 		BufferedReader fileReader = null;
+		User[] users;
 		
-		
-		// read data file
+		// read data file, get number of lines, so the array can be initialized in the right size
 		try {
 			fileReader = new BufferedReader(new FileReader("data.txt"));
 			
@@ -25,33 +24,52 @@ public class UsersData {
 				count++;
 				System.out.println(line);
 			}
-			/* not working
-			 * User[] users = new User[count]; while ((line = fileReader.readLine()) !=
-			 * null) { System.out.println("started users loop"); BufferedReader fileReader1;
-			 * // try { fileReader1 = new BufferedReader(new FileReader("data.txt")); //
-			 * String line = ""; line = fileReader1.readLine(); String[] tempArray =
-			 * line.split(","); users[count] = new User(tempArray);
-			 * System.out.println(line); }
-			 */
-			
 		} catch (FileNotFoundException e) {
 			System.out.println("file not found");
 			e.printStackTrace();
 		} catch (IOException e) {
 			System.out.println("Oops, there was an I/O Exception");
 			e.printStackTrace();
-		} /*finally {
+		} finally {
 			try {
 				System.out.println("Closing file reader");
 				fileReader.close();
 			} catch (IOException e) {
 				e.printStackTrace();
-			}*/
-		//}
-		User[] users = new User[count];
-		  
+			}
+		}
+		
+		users = new User[count];
+		count = -1;  
+		// read data into Array of Iser objects
+		try {
+			fileReader = new BufferedReader(new FileReader("data.txt"));
+			String line = "";
+			
+			while ((line = fileReader.readLine()) != null) {
+				count++;
+				String[] tempArray = line.split(",");
+				users[count] = new User(tempArray);
+				System.out.println(line);
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("file not found");
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("Oops, there was an I/O Exception");
+			e.printStackTrace();
+		} finally {
+			try {
+				System.out.println("Closing file reader");
+				fileReader.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		System.out.println(users[0]);
+		
 		 // macht ein arrray nur mit der ersten zeile
-		for (int i =0 ; i < count; i++) {
+/*		for (int i =0 ; i < count; i++) {
 			System.out.println("started users loop"+i);
 			BufferedReader fileReader1;
 			try {
@@ -69,10 +87,7 @@ public class UsersData {
 			
 			System.out.println(users);
 		
-	}
-		 
-	
-	
+	}*/
 
 }
 }

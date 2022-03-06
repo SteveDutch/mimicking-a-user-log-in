@@ -4,7 +4,7 @@ public class LogIn {
 
 	public static void main(String[] args) {
 		UsersData data = new UsersData();
-		System.out.println();
+		System.out.println("fini");
 
 	}
 
