@@ -11,4 +11,10 @@ public class User {
 		this.password = password;
 		this.name = name;
 	}
+
+	public User(String[] String) {
+		username = String[0];
+		password = String[1];
+		name = String[2];
+	}
 }
