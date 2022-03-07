@@ -5,11 +5,11 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class UsersData {
+public class UserService {
 	
 	private int count = 0;
 		
-	public UsersData() {
+	public UserService() {
 		System.out.println("Heia");
 		
 		BufferedReader fileReader = null;
