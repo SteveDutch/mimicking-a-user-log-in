@@ -22,7 +22,7 @@ public class UserService {
 			String line = "";
 			while ((line = fileReader.readLine()) != null) {
 				count++;
-				System.out.println(line);
+				System.out.println(" counting number of lines "+ line);
 			}
 		} catch (FileNotFoundException e) {
 			System.out.println("file not found");
@@ -41,7 +41,7 @@ public class UserService {
 		
 		users = new User[count];
 		count = -1;  
-		// read data into Array of Iser objects
+		// read data into Array of User objects
 		try {
 			fileReader = new BufferedReader(new FileReader("data.txt"));
 			String line = "";
@@ -50,13 +50,13 @@ public class UserService {
 				count++;
 				String[] tempArray = line.split(",");
 				users[count] = new User(tempArray);
-				System.out.println(line);
+				System.out.println("reading in file data / users  " + line);
 			}
 		} catch (FileNotFoundException e) {
 			System.out.println("file not found");
 			e.printStackTrace();
 		} catch (IOException e) {
-			System.out.println("Oops, there was an I/O Exception");
+			System.out.println("I/O Exception");
 			e.printStackTrace();
 		} finally {
 			try {
@@ -66,7 +66,10 @@ public class UserService {
 				e.printStackTrace();
 			}
 		}
-		System.out.println(users[0]);
+		System.out.println(users[0].getName());
+		System.out.println(users[1].getPassword());
+		System.out.println(users[2].getUsername());
+		System.out.println(users[3].getName());
 		
 		 // macht ein arrray nur mit der ersten zeile
 /*		for (int i =0 ; i < count; i++) {
