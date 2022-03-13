@@ -1,8 +1,6 @@
 package com.coderscampus.assignment3;
 
 public class User {
-	
-
 
 	private String username;
 	private String password;
@@ -19,7 +17,7 @@ public class User {
 		password = String[1];
 		name = String[2];
 	}
-	
+
 	public String getUsername() {
 		return username;
 	}
@@ -43,6 +41,5 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
+
 }
