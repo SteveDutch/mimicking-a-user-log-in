@@ -77,26 +77,59 @@ public class UserService {
 			if (failedTrial > 5) {
 				return false;
 			}
-			;
+
 			String email = UserLoginApplication.inputMail();
+			String password = UserLoginApplication.inputPassword();
 
 			for (int k = 0; k < count; k++) { // Schleife zum Prüfen der Eingabe, loop for testing user's input
 
-				if (email.equalsIgnoreCase(users[k].getUsername()) == true) {
-					String password = UserLoginApplication.inputPassword();
-					for (int j = 0; j < count; j++) {
-						if (password.equals(users[k].getPassword()) == true) {
-							System.out.println("\nWelcome: " + users[k].getName());
-							return true;
-						}
-					}
+				if (email.equalsIgnoreCase(users[k].getUsername()) == true && password.equals(users[k].getPassword()) == true) {
+					System.out.println("\nWelcome: " + users[k].getName());
+					return true;
 				}
 
 			}
-			System.out.println("Invalid login, please try again");
+			if (failedTrial < 5) {
+				System.out.println("\nInvalid login, please try again");
+			}
 
 		}
 		return false;
 
 	}
+	
+	/*
+	 * working, but not conform to requirements: a wrong / unknown email address leads already
+	 * to an invalid login
+	 */	
+//	boolean checkUserInput() {
+//
+//		int failedTrial = 0;
+//		for (int i = 1; i < 6; i++) { // Versuchsschleife, loop for 5 trials
+//			failedTrial++;
+//			if (failedTrial > 5) {
+//				return false;
+//			}
+//			
+//			String email = UserLoginApplication.inputMail();
+//
+//			for (int k = 0; k < count; k++) { // Schleife zum Prüfen der Eingabe, loop for testing user's input
+//
+//				if (email.equalsIgnoreCase(users[k].getUsername()) == true) {
+//					String password = UserLoginApplication.inputPassword();
+//					for (int j = 0; j < count; j++) {
+//						if (password.equals(users[k].getPassword()) == true) {
+//							System.out.println("\nWelcome: " + users[k].getName());
+//							return true;
+//						}
+//					}
+//				}
+//
+//			}
+//			System.out.println("\nInvalid login, please try again");
+//
+//		}
+//		return false;
+//
+//	}
 }
