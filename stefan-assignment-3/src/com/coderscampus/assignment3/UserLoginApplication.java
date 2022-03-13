@@ -8,16 +8,19 @@ public class UserLoginApplication {
 		UserService data = new UserService();
 		System.out.println("back in main method " + data);
 		
-		inputMail();
-		inputPassword();
+//		inputMail();
+//		inputPassword();
 		
 		
-		System.out.println(inputPassword());
-		System.out.println("fini");
-
+//		System.out.println(inputPassword());
+//		System.out.println("fini");
+		Boolean loginSuccess = data.checkUserInput(/* inputMail(), inputPassword() */);
+		 if  (loginSuccess == false) {
+			 System.out.println("Too many failed login attempts, you are now locked out.");
+		 }
 	}
-
-	private static String inputMail() {
+	// TODO close scanners
+	static String inputMail() {
 		System.out.println("Enter your email:\n");
 		Scanner scanner = new Scanner(System.in);
 		String inputMail = scanner.nextLine();
@@ -25,13 +28,15 @@ public class UserLoginApplication {
 		return inputMail;
 	}
 	
-	private static String inputPassword() {
+	static String inputPassword() {
 		System.out.println("Enter your password: \n");
 		Scanner scanner = new Scanner(System.in);
-		String inputPassword = scanner.nextLine();
-		return inputPassword;
+		String inputtedPassword = scanner.nextLine();
+		//String inputtedPassword = null;
+		return inputtedPassword;
 	}
 	
+
 	
 
 }

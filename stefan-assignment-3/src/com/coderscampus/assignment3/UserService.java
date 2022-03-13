@@ -8,12 +8,12 @@ import java.io.IOException;
 public class UserService {
 	
 	private int count = 0;
-		
+	User[] users;
 	public UserService() {
 		System.out.println("Heia");
 		
 		BufferedReader fileReader = null;
-		User[] users;
+		
 		
 		// read data file, get number of lines, so the array can be initialized in the right size
 		try {
@@ -40,16 +40,16 @@ public class UserService {
 		}
 		
 		users = new User[count];
-		count = -1;  
+		int count2 = -1;  
 		// read data into Array of User objects
 		try {
 			fileReader = new BufferedReader(new FileReader("data.txt"));
 			String line = "";
 			
 			while ((line = fileReader.readLine()) != null) {
-				count++;
+				count2++;
 				String[] tempArray = line.split(",");
-				users[count] = new User(tempArray);
+				users[count2] = new User(tempArray);
 				System.out.println("reading in file data / users  " + line);
 			}
 		} catch (FileNotFoundException e) {
@@ -71,26 +71,52 @@ public class UserService {
 		System.out.println(users[2].getUsername());
 		System.out.println(users[3].getName());
 		
-		 // macht ein arrray nur mit der ersten zeile
-/*		for (int i =0 ; i < count; i++) {
-			System.out.println("started users loop"+i);
-			BufferedReader fileReader1;
-			try {
-				fileReader1 = new BufferedReader(new FileReader("data.txt"));
-				String line = "";
-				line = fileReader1.readLine();
-				String[] tempArray = line.split(",");
-					users[i] = new User(tempArray);
-					System.out.println(line);
-				//}
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		// macht ein arrray nur mit der ersten zeile
+		/*
+		 * for (int i =0 ; i < count; i++) { System.out.println("started users loop"+i);
+		 * BufferedReader fileReader1; try { fileReader1 = new BufferedReader(new
+		 * FileReader("data.txt")); String line = ""; line = fileReader1.readLine();
+		 * String[] tempArray = line.split(","); users[i] = new User(tempArray);
+		 * System.out.println(line); //} } catch (IOException e) { // TODO
+		 * Auto-generated catch block e.printStackTrace(); }
+		 * 
+		 * System.out.println(users);
+		 * 
+		 * }
+		 */
+
+	}
+
+	boolean checkUserInput(/* String email, String password */) {
+		System.out.println("ja, prüfschleife");
+		int failedTrial = 0;
+		for (int i = 1; i < 6; i++) { //Versuchsschleife
+			failedTrial++;
+			if (failedTrial > 5) {return false;};
+			String email = UserLoginApplication.inputMail();
 			
-			System.out.println(users);
+			for (int k= 0; k < count; k++) { //Schleife zum Prüfen der Eingabe
+				
+				if (email.equalsIgnoreCase(users[k].getUsername()) == true) {
+					String password = UserLoginApplication.inputPassword();
+					for (int j= 0; j < count; j++) {
+							if (password.equals(users[k].getPassword()) == true) {
+								System.out.println("Welcome: " + users[k].getName());
+								return true;
+							}						
+					}  // failedTrial++;
+				} 
+					/*
+					 * else { System.out.println("Invalid login, please try again") ;
+					 * 
+					 * }
+					 */
+				
+		} System.out.println("Invalid login, please try again") ;
+		//return false;
 		
-	}*/
+	}
+		return false;
 
 }
 }
