@@ -11,7 +11,6 @@ public class UserService {
 	User[] users;
 
 	public UserService() {
-		System.out.println("Heia");
 
 		BufferedReader fileReader = null;
 
@@ -23,7 +22,7 @@ public class UserService {
 			String line = "";
 			while ((line = fileReader.readLine()) != null) {
 				count++;
-				System.out.println(" counting number of lines " + line);
+
 			}
 			// taken & adapted from Trevor's lesson
 		} catch (FileNotFoundException e) {
@@ -34,7 +33,6 @@ public class UserService {
 			e.printStackTrace();
 		} finally {
 			try {
-				System.out.println("closing file reader");
 				fileReader.close();
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -53,7 +51,7 @@ public class UserService {
 				count2++;
 				String[] tempArray = line.split(",");
 				users[count2] = new User(tempArray);
-				System.out.println("reading in file data / users  " + line);
+
 			}
 		} catch (FileNotFoundException e) {
 			System.out.println("file not found");
@@ -63,7 +61,6 @@ public class UserService {
 			e.printStackTrace();
 		} finally {
 			try {
-				System.out.println("Closing file reader");
 				fileReader.close();
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -89,7 +86,7 @@ public class UserService {
 					String password = UserLoginApplication.inputPassword();
 					for (int j = 0; j < count; j++) {
 						if (password.equals(users[k].getPassword()) == true) {
-							System.out.println("Welcome: " + users[k].getName());
+							System.out.println("\nWelcome: " + users[k].getName());
 							return true;
 						}
 					}
@@ -103,7 +100,3 @@ public class UserService {
 
 	}
 }
-		
-	
-
-

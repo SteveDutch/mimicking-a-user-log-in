@@ -6,17 +6,16 @@ public class UserLoginApplication {
 
 	public static void main(String[] args) {
 		UserService data = new UserService();
-		System.out.println("back in main method " + data);
 
 		Boolean loginSuccess = data.checkUserInput();
 		if (loginSuccess == false) {
-			System.out.println("Too many failed login attempts, you are now locked out.");
+			System.out.println("\nToo many failed login attempts, you are now locked out.");
 		}
 	}
 
 	// TODO close scanners
 	static String inputMail() {
-		System.out.println("Enter your email:\n");
+		System.out.println("\nEnter your email:\n");
 		Scanner scanner = new Scanner(System.in);
 		String inputMail = scanner.nextLine();
 		System.out.println(inputMail);
@@ -24,7 +23,7 @@ public class UserLoginApplication {
 	}
 
 	static String inputPassword() {
-		System.out.println("Enter your password: \n");
+		System.out.println("\nEnter your password: \n");
 		Scanner scanner = new Scanner(System.in);
 		String inputtedPassword = scanner.nextLine();
 		return inputtedPassword;
