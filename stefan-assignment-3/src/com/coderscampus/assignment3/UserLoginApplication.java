@@ -13,7 +13,7 @@ public class UserLoginApplication {
 		}
 	}
 
-	// TODO close scanners -> not necessary regarding to 
+	// close scanners -> not necessary regarding to 
 	// https://stackoverflow.com/questions/54393770/fixing-java-util-nosuchelementexception-for-scanner
 	static String inputMail() {
 		System.out.println("\nEnter your email:\n");
